@@ -68,7 +68,8 @@ a:hover{opacity:.72}
 .nav a{
   display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 20px;
   background:var(--ink); color:var(--ac);
-  font-size:14px; font-weight:600; letter-spacing:1.6px; text-transform:uppercase; text-decoration:none;
+  font-family:var(--disp); font-stretch:125%; font-weight:800; font-size:15px; letter-spacing:.04em;
+  text-transform:uppercase; text-decoration:none;
 }
 .wip{margin-top:72px; display:flex; align-items:center; gap:10px; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase}
 .wip::before{content:""; width:8px; height:8px; background:var(--ink)}
@@ -166,7 +167,7 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
 
 @media (max-width:640px){
   .nav{margin-left:0; width:100%; display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:6px}
-  .nav a{min-height:46px; padding:0; font-size:12px; letter-spacing:1.2px}
+  .nav a{min-height:46px; padding:0; font-size:12px; letter-spacing:.02em}
   .wip{margin-top:48px}
   .ctas{margin-left:0; width:100%}
   .btn{flex:1 1 auto; min-height:48px; padding:0 18px}
