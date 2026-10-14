@@ -101,7 +101,7 @@ a:hover{opacity:.72}
 .proof-txt p{margin:16px 0 0; color:var(--soft); font-size:14px; max-width:560px}
 
 /* --- Receipts: real PNL cards, fanned on an orange band ----------------- */
-.receipts{margin-top:120px; overflow:hidden}
+.receipts{overflow:hidden}
 .receipts .wrap{padding-top:88px; padding-bottom:112px}
 .receipts-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:12px 32px}
 .receipts-head .label{color:var(--ink)}
@@ -122,7 +122,9 @@ a:hover{opacity:.72}
 .fan img:hover{transform:rotate(0deg) translateY(-10px) scale(1.04); box-shadow:0 40px 72px rgba(0,0,0,.4); z-index:3}
 
 /* --- Sections ----------------------------------------------------------- */
-.section{padding-top:120px}
+/* Orange bands carry no outer margin: an empty black stripe would show
+   between them. The black sections hold the spacing instead. */
+.section{padding-top:120px; padding-bottom:120px}
 .h2{margin:0; font-size:clamp(36px, 5vw, 72px); line-height:.95; letter-spacing:-.02em}
 .h2 em{font-style:normal; color:var(--ac)}
 
@@ -135,7 +137,6 @@ a:hover{opacity:.72}
    descriptions would still leave them readable in the page source. */
 .card p.withheld{filter:blur(5px); -webkit-user-select:none; user-select:none}
 
-.how{margin-top:120px}
 .how .wrap{padding-top:88px; padding-bottom:88px}
 .steps{margin-top:48px; display:flex; flex-wrap:wrap; gap:32px}
 .step{flex:1 1 240px; min-width:0; border-top:3px solid var(--ink); padding-top:18px}
@@ -152,7 +153,6 @@ a:hover{opacity:.72}
 .stack .ac{color:var(--ac)}
 
 /* --- Footer ------------------------------------------------------------- */
-footer{margin-top:128px}
 footer .wrap{padding-top:72px; padding-bottom:48px}
 .end{font-size:clamp(40px, 7vw, 104px); line-height:.9; letter-spacing:-.02em}
 .end .yet{background:var(--ink); color:var(--ac); padding:0 .12em}
