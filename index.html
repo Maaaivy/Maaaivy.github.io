@@ -183,9 +183,9 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
       </svg>
       <div class="brand">IFC Hunter</div>
       <nav class="nav" aria-label="Sections">
-        <a href="#build">Build</a>
-        <a href="#signals">Signals</a>
         <a href="#how">How</a>
+        <a href="#signals">Signals</a>
+        <a href="#build">Build</a>
       </nav>
       <span class="chip">Work in progress</span>
     </header>
@@ -210,27 +210,28 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
 </div>
 
 <main>
-  <section class="wrap section build" id="build" tabindex="-1">
-    <div class="build-l">
-      <h2 class="h2 disp">Under<br>the hood.</h2>
-      <div class="facts">
-        <div>
-          <h3>Replay bench</h3>
-          <p>Every deploy replays real past calls. One ranks worse, the release is blocked.</p>
+  <section class="orange how" id="how" tabindex="-1">
+    <div class="wrap">
+      <h2 class="h2 disp">Launch → alert.</h2>
+      <div class="steps">
+        <div class="step">
+          <h3 class="disp">1 · Ingest</h3>
+          <p>New launches from pump.fun and DexScreener, pulled every 15 seconds, filtered on age and market cap.</p>
         </div>
-        <div>
-          <h3>Priced before it runs</h3>
-          <p>Cheap signature reads first, paid parsing only on the window that matters.</p>
+        <div class="step">
+          <h3 class="disp">2 · Profile</h3>
+          <p>Each group's past calls define its own fingerprint. Measured, never guessed.</p>
         </div>
-        <div>
-          <h3>One writer, private network</h3>
-          <p>One server writes, every other machine reads. Nothing faces the open internet.</p>
+        <div class="step">
+          <h3 class="disp">3 · Lock in</h3>
+          <p>One button opens a hunt: tracked wallets polled live, every candidate ranked.</p>
+        </div>
+        <div class="step">
+          <h3 class="disp">4 · Alert</h3>
+          <p>A Telegram ping when signals converge. Every round of the ranking is kept.</p>
         </div>
       </div>
     </div>
-    <ul class="stack disp" aria-label="Stack">
-      <li class="on">Python</li><li>Flask</li><li class="on">SQLite</li><li>Telethon</li><li class="ac">Helius</li><li>DexScreener</li><li class="on">pump.fun</li><li>Debian</li><li>systemd</li><li class="on">Tailscale</li>
-    </ul>
   </section>
 
   <section class="wrap proof" aria-label="Results so far">
@@ -273,30 +274,6 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
     </div>
   </section>
 
-  <section class="orange how" id="how" tabindex="-1">
-    <div class="wrap">
-      <h2 class="h2 disp">Launch → alert.</h2>
-      <div class="steps">
-        <div class="step">
-          <h3 class="disp">1 · Ingest</h3>
-          <p>New launches from pump.fun and DexScreener, pulled every 15 seconds, filtered on age and market cap.</p>
-        </div>
-        <div class="step">
-          <h3 class="disp">2 · Profile</h3>
-          <p>Each group's past calls define its own fingerprint. Measured, never guessed.</p>
-        </div>
-        <div class="step">
-          <h3 class="disp">3 · Lock in</h3>
-          <p>One button opens a hunt: tracked wallets polled live, every candidate ranked.</p>
-        </div>
-        <div class="step">
-          <h3 class="disp">4 · Alert</h3>
-          <p>A Telegram ping when signals converge. Every round of the ranking is kept.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="orange receipts" aria-labelledby="receipts-title">
     <div class="wrap">
       <div class="receipts-head">
@@ -309,6 +286,29 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
         <img src="pnl/apegun.png" width="1980" height="1320" loading="lazy" alt="PNL card, APEGUN: +$100.23, +79.60% on $125.91 invested">
       </div>
     </div>
+  </section>
+
+  <section class="wrap section build" id="build" tabindex="-1">
+    <div class="build-l">
+      <h2 class="h2 disp">Under<br>the hood.</h2>
+      <div class="facts">
+        <div>
+          <h3>Replay bench</h3>
+          <p>Every deploy replays real past calls. One ranks worse, the release is blocked.</p>
+        </div>
+        <div>
+          <h3>Priced before it runs</h3>
+          <p>Cheap signature reads first, paid parsing only on the window that matters.</p>
+        </div>
+        <div>
+          <h3>One writer, private network</h3>
+          <p>One server writes, every other machine reads. Nothing faces the open internet.</p>
+        </div>
+      </div>
+    </div>
+    <ul class="stack disp" aria-label="Stack">
+      <li class="on">Python</li><li>Flask</li><li class="on">SQLite</li><li>Telethon</li><li class="ac">Helius</li><li>DexScreener</li><li class="on">pump.fun</li><li>Debian</li><li>systemd</li><li class="on">Tailscale</li>
+    </ul>
   </section>
 </main>
 
