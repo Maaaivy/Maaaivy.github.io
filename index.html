@@ -85,11 +85,8 @@ a:hover{opacity:.72}
 .btn-line{border:2px solid var(--ink)}
 
 /* --- Ticker ------------------------------------------------------------- */
-.ticker{border-bottom:1px solid var(--line); overflow:hidden; padding:16px 0; color:var(--ac)}
-.ticker-track{display:flex; width:max-content; animation:tick 48s linear infinite}
-.ticker-track span{padding-right:24px; white-space:nowrap; font-size:13px; font-weight:500; letter-spacing:2px; text-transform:uppercase}
-@keyframes tick{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion: reduce){ .ticker-track{animation:none} }
+.ticker{padding:16px 0; color:var(--ac)}
+.ticker-line{margin:0 auto; text-align:center; font-size:13px; font-weight:500; letter-spacing:2px; text-transform:uppercase}
 
 /* --- Proof -------------------------------------------------------------- */
 .proof{padding-top:104px; display:flex; flex-wrap:wrap; align-items:center; gap:24px 56px}
@@ -194,16 +191,14 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
     <div class="hero-foot">
       <p class="lede">IFC Hunter — Insider From Cabal. A real-time Solana scanner that ranks every new memecoin by how closely it matches the next public call of a known group.</p>
       <div class="ctas">
-        <a class="btn btn-solid" href="#how">How it works</a>      </div>
+        <a class="btn btn-solid" href="#how">How it works</a>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="ticker">
-  <div class="ticker-track">
-    <span>Solana ■ 5 signals ■ 15 s refresh ■ 12 groups tracked ■ 256 calls dated ■ private build ■ by MAAV ■</span>
-    <span aria-hidden="true">Solana ■ 5 signals ■ 15 s refresh ■ 12 groups tracked ■ 256 calls dated ■ private build ■ by MAAV ■</span>
-  </div>
+  <p class="wrap ticker-line">■ 15&nbsp;s&nbsp;refresh ■ 12&nbsp;groups&nbsp;tracked ■ 256&nbsp;calls&nbsp;dated ■ private&nbsp;build ■ by&nbsp;MAAV ■</p>
 </div>
 
 <main>
