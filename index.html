@@ -76,13 +76,6 @@ a:hover{opacity:.72}
 }
 .hero-foot{margin-top:48px; display:flex; flex-wrap:wrap; align-items:flex-end; gap:32px}
 .lede{margin:0; flex:1 1 420px; max-width:560px; font-size:17px; font-weight:500}
-.ctas{display:flex; flex-wrap:wrap; gap:12px; margin-left:auto}
-.btn{
-  display:inline-flex; align-items:center; min-height:52px; padding:0 24px;
-  font-size:12px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; text-decoration:none;
-}
-.btn-solid{background:var(--ink); color:var(--ac)}
-.btn-line{border:2px solid var(--ink)}
 
 /* --- Ticker ------------------------------------------------------------- */
 .ticker{padding:16px 0; color:var(--ac)}
@@ -134,6 +127,7 @@ a:hover{opacity:.72}
 .card p.withheld{filter:blur(5px); -webkit-user-select:none; user-select:none}
 
 .how .wrap{padding-top:88px; padding-bottom:88px}
+.how-label{color:var(--ink); margin-bottom:14px}
 .steps{margin-top:48px; display:flex; flex-wrap:wrap; gap:32px}
 .step{flex:1 1 240px; min-width:0; border-top:3px solid var(--ink); padding-top:18px}
 .step h3{margin:0; font-size:26px}
@@ -160,7 +154,6 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
   .nav{display:none}
   .chip{margin-left:auto}
   .hero h1{margin-top:56px}
-  .ctas{margin-left:0}
   .foot .right{margin-left:0}
   .fan img{flex-basis:100%; margin:-4px 0}
   .fan img:nth-child(2){transform:rotate(2deg) translateY(0) scale(1)}
@@ -190,9 +183,6 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
 
     <div class="hero-foot">
       <p class="lede">IFC Hunter — Insider From Cabal. A real-time Solana scanner that ranks every new memecoin by how closely it matches the next public call of a known group.</p>
-      <div class="ctas">
-        <a class="btn btn-solid" href="#how">How it works</a>
-      </div>
     </div>
   </div>
 </section>
@@ -204,6 +194,7 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
 <main>
   <section class="orange how" id="how" tabindex="-1">
     <div class="wrap">
+      <div class="label how-label">How it works</div>
       <h2 class="h2 disp">Launch → alert.</h2>
       <div class="steps">
         <div class="step">
