@@ -9,4 +9,4 @@ one static `index.html`, no framework, no build step.
 
 Built by **MAAV** — [@maav_sol](https://x.com/maav_sol)
 
-No token. Nothing to buy. Not financial advice.
+No token yet. Not financial advice.
