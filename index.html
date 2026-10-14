@@ -183,9 +183,9 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
       </svg>
       <div class="brand">IFC Hunter</div>
       <nav class="nav" aria-label="Sections">
+        <a href="#build">Build</a>
         <a href="#signals">Signals</a>
         <a href="#how">How</a>
-        <a href="#build">Build</a>
       </nav>
       <span class="chip">Work in progress</span>
     </header>
@@ -210,26 +210,35 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
 </div>
 
 <main>
+  <section class="wrap section build" id="build" tabindex="-1">
+    <div class="build-l">
+      <h2 class="h2 disp">Under<br>the hood.</h2>
+      <div class="facts">
+        <div>
+          <h3>Replay bench</h3>
+          <p>Every deploy replays real past calls. One ranks worse, the release is blocked.</p>
+        </div>
+        <div>
+          <h3>Priced before it runs</h3>
+          <p>Cheap signature reads first, paid parsing only on the window that matters.</p>
+        </div>
+        <div>
+          <h3>One writer, private network</h3>
+          <p>One server writes, every other machine reads. Nothing faces the open internet.</p>
+        </div>
+      </div>
+    </div>
+    <ul class="stack disp" aria-label="Stack">
+      <li class="on">Python</li><li>Flask</li><li class="on">SQLite</li><li>Telethon</li><li class="ac">Helius</li><li>DexScreener</li><li class="on">pump.fun</li><li>Debian</li><li>systemd</li><li class="on">Tailscale</li>
+    </ul>
+  </section>
+
   <section class="wrap proof" aria-label="Results so far">
     <div class="proof-num disp">4<span>/7</span></div>
     <div class="proof-txt">
       <div class="label">Lock-in sessions on a real call</div>
       <h2>In four, the called coin was in the top 5 of the feed by the time the call dropped.</h2>
       <p>Seven sessions so far, misses included. Two of the four were checked afterwards, by replaying the session through the actual code.</p>
-    </div>
-  </section>
-
-  <section class="orange receipts" aria-labelledby="receipts-title">
-    <div class="wrap">
-      <div class="receipts-head">
-        <h2 class="h2 disp" id="receipts-title">Receipts.</h2>
-        <div class="label">Selected trades</div>
-      </div>
-      <div class="fan">
-        <img src="pnl/cateshi.png" width="1980" height="1320" loading="lazy" alt="PNL card, CATESHI: +$47.98, +25.99% on $184.61 invested">
-        <img src="pnl/paidcate.png" width="1980" height="1320" loading="lazy" alt="PNL card, PAIDCATE: +$36.95, +37.36% on $98.89 invested">
-        <img src="pnl/apegun.png" width="1980" height="1320" loading="lazy" alt="PNL card, APEGUN: +$100.23, +79.60% on $125.91 invested">
-      </div>
     </div>
   </section>
 
@@ -288,27 +297,18 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
     </div>
   </section>
 
-  <section class="wrap section build" id="build" tabindex="-1">
-    <div class="build-l">
-      <h2 class="h2 disp">Under<br>the hood.</h2>
-      <div class="facts">
-        <div>
-          <h3>Replay bench</h3>
-          <p>Every deploy replays real past calls. One ranks worse, the release is blocked.</p>
-        </div>
-        <div>
-          <h3>Priced before it runs</h3>
-          <p>Cheap signature reads first, paid parsing only on the window that matters.</p>
-        </div>
-        <div>
-          <h3>One writer, private network</h3>
-          <p>One server writes, every other machine reads. Nothing faces the open internet.</p>
-        </div>
+  <section class="orange receipts" aria-labelledby="receipts-title">
+    <div class="wrap">
+      <div class="receipts-head">
+        <h2 class="h2 disp" id="receipts-title">Receipts.</h2>
+        <div class="label">Selected trades</div>
+      </div>
+      <div class="fan">
+        <img src="pnl/cateshi.png" width="1980" height="1320" loading="lazy" alt="PNL card, CATESHI: +$47.98, +25.99% on $184.61 invested">
+        <img src="pnl/paidcate.png" width="1980" height="1320" loading="lazy" alt="PNL card, PAIDCATE: +$36.95, +37.36% on $98.89 invested">
+        <img src="pnl/apegun.png" width="1980" height="1320" loading="lazy" alt="PNL card, APEGUN: +$100.23, +79.60% on $125.91 invested">
       </div>
     </div>
-    <ul class="stack disp" aria-label="Stack">
-      <li class="on">Python</li><li>Flask</li><li class="on">SQLite</li><li>Telethon</li><li class="ac">Helius</li><li>DexScreener</li><li class="on">pump.fun</li><li>Debian</li><li>systemd</li><li class="on">Tailscale</li>
-    </ul>
   </section>
 </main>
 
