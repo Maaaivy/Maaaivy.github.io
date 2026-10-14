@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IFC Hunter — Before the call</title>
+<meta name="description" content="IFC Hunter (Insider From Cabal): a real-time Solana scanner that ranks every new memecoin by how closely it matches the next public call of a known group. Built by MAAV.">
+<meta name="theme-color" content="#FF6B00">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maaaivy.github.io/">
+<meta property="og:title" content="IFC Hunter — Before the call">
+<meta property="og:description" content="A real-time Solana scanner that ranks every new memecoin by how closely it matches the next public call of a known group.">
+<meta property="og:image" content="https://maaaivy.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@maav_sol">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@800&display=swap" rel="stylesheet">
+
+<style>
+/* IFC Hunter — vitrine. Same palette as the app: pure black, one orange. */
+:root{
+  --ac:#FF6B00;
+  --ink:#0A0A0A;
+  --bg:#000000;
+  --txt:#EDEDED;
+  --muted:#8A8A8A;
+  --soft:#A6A6A6;
+  --line:#1C1C1C;
+  --card:#0E0E0E;
+  --disp:'Archivo', 'Arial Black', system-ui, sans-serif;
+  --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --wrap:1280px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--txt);
+  font-family:var(--mono); font-size:15px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+a:hover{opacity:.72}
+::selection{background:var(--ac); color:var(--ink)}
+:focus-visible{outline:2px solid currentColor; outline-offset:3px}
+
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 24px}
+.disp{font-family:var(--disp); font-stretch:125%; font-weight:900; text-transform:uppercase}
+.label{font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted)}
+
+/* --- Orange blocks ------------------------------------------------------ */
+.orange{background:var(--ac); color:var(--ink)}
+
+/* --- Header ------------------------------------------------------------- */
+.top{display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; padding-top:20px}
+.logo{width:40px; height:40px; flex:none; display:block; outline:2px solid var(--ink)}
+.brand{font-family:var(--disp); font-stretch:125%; font-weight:900; font-size:16px; letter-spacing:.5px; text-transform:uppercase}
+.nav{display:flex; flex-wrap:wrap; margin-left:auto}
+.nav a{padding:14px 12px; font-size:11px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; text-decoration:none}
+.chip{border:2px solid var(--ink); padding:5px 10px; font-size:10px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; white-space:nowrap}
+
+/* --- Hero --------------------------------------------------------------- */
+.hero{padding-bottom:64px}
+.hero h1{
+  margin:80px 0 0; font-size:clamp(40px, 11.5vw, 196px);
+  line-height:.86; letter-spacing:-.02em;
+}
+.hero-foot{margin-top:48px; display:flex; flex-wrap:wrap; align-items:flex-end; gap:32px}
+.lede{margin:0; flex:1 1 420px; max-width:560px; font-size:17px; font-weight:500}
+.ctas{display:flex; flex-wrap:wrap; gap:12px; margin-left:auto}
+.btn{
+  display:inline-flex; align-items:center; min-height:52px; padding:0 24px;
+  font-size:12px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; text-decoration:none;
+}
+.btn-solid{background:var(--ink); color:var(--ac)}
+.btn-line{border:2px solid var(--ink)}
+
+/* --- Ticker ------------------------------------------------------------- */
+.ticker{border-bottom:1px solid var(--line); overflow:hidden; padding:16px 0; color:var(--ac)}
+.ticker-track{display:flex; width:max-content; animation:tick 48s linear infinite}
+.ticker-track span{padding-right:24px; white-space:nowrap; font-size:13px; font-weight:500; letter-spacing:2px; text-transform:uppercase}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){ .ticker-track{animation:none} }
+
+/* --- Proof -------------------------------------------------------------- */
+.proof{padding-top:104px; display:flex; flex-wrap:wrap; align-items:center; gap:24px 56px}
+.proof-num{font-size:clamp(88px, 15vw, 224px); line-height:.85; letter-spacing:-.03em; color:var(--ac); white-space:nowrap}
+.proof-num span{color:#3A3A3A}
+.proof-txt{flex:1 1 380px; min-width:0}
+.proof-txt h2{margin:10px 0 0; font-family:var(--disp); font-stretch:110%; font-weight:800; font-size:clamp(24px, 2.6vw, 34px); line-height:1.15}
+.proof-txt p{margin:16px 0 0; color:var(--soft); font-size:14px; max-width:560px}
+
+/* --- Sections ----------------------------------------------------------- */
+.section{padding-top:120px}
+.h2{margin:0; font-size:clamp(36px, 5vw, 72px); line-height:.95; letter-spacing:-.02em}
+.h2 em{font-style:normal; color:var(--ac)}
+
+.cards{margin-top:56px; display:flex; flex-wrap:wrap; gap:12px}
+.card{flex:1 1 210px; min-width:0; background:var(--card); padding:24px 20px 28px}
+.card-n{font-size:56px; line-height:1; color:var(--ac)}
+.card h3{margin:28px 0 0; font-family:var(--disp); font-weight:800; font-size:20px}
+.card p{margin:8px 0 0; font-size:13px; color:var(--soft)}
+
+.how{margin-top:120px}
+.how .wrap{padding-top:88px; padding-bottom:88px}
+.steps{margin-top:48px; display:flex; flex-wrap:wrap; gap:32px}
+.step{flex:1 1 240px; min-width:0; border-top:3px solid var(--ink); padding-top:18px}
+.step h3{margin:0; font-size:26px}
+.step p{margin:10px 0 0; font-size:14px; font-weight:500}
+
+.build{display:flex; flex-wrap:wrap; gap:48px 64px}
+.build-l{flex:1 1 440px; min-width:0}
+.facts{margin-top:40px; display:flex; flex-direction:column; gap:22px}
+.facts h3{margin:0; font-family:var(--disp); font-weight:800; font-size:18px}
+.facts p{margin:4px 0 0; font-size:14px; color:var(--soft)}
+.stack{flex:1 1 400px; min-width:0; margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:0 .45em; font-size:clamp(28px, 3.4vw, 48px); line-height:1.12; color:#3A3A3A}
+.stack .on{color:var(--txt)}
+.stack .ac{color:var(--ac)}
+
+/* --- Footer ------------------------------------------------------------- */
+footer{margin-top:128px}
+footer .wrap{padding-top:72px; padding-bottom:48px}
+.end{font-size:clamp(40px, 7vw, 104px); line-height:.9; letter-spacing:-.02em}
+.foot{margin-top:48px; padding-top:20px; border-top:2px solid var(--ink); display:flex; flex-wrap:wrap; gap:8px 28px; align-items:center; font-size:13px; font-weight:500}
+.foot a{padding:12px 0}
+.foot .right{margin-left:auto}
+
+@media (max-width:640px){
+  .nav{display:none}
+  .chip{margin-left:auto}
+  .hero h1{margin-top:56px}
+  .ctas{margin-left:0}
+  .foot .right{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<section class="orange hero">
+  <div class="wrap">
+    <header class="top">
+      <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+        <rect width="100" height="100" fill="#FF6B00"/>
+        <text x="48" y="60" text-anchor="middle" font-family="Inter,'Arial Black',sans-serif" font-size="33" font-weight="800" fill="#0A0A0A">IFC</text>
+        <rect x="71" y="71" width="15" height="15" fill="#0A0A0A"/>
+      </svg>
+      <div class="brand">IFC Hunter</div>
+      <nav class="nav" aria-label="Sections">
+        <a href="#signals">Signals</a>
+        <a href="#how">How</a>
+        <a href="#build">Build</a>
+      </nav>
+      <span class="chip">Work in progress</span>
+    </header>
+
+    <h1 class="disp">Before<br>the call.</h1>
+
+    <div class="hero-foot">
+      <p class="lede">IFC Hunter — Insider From Cabal. A real-time Solana scanner that ranks every new memecoin by how closely it matches the next public call of a known group.</p>
+      <div class="ctas">
+        <a class="btn btn-solid" href="#how">How it works</a>
+        <a class="btn btn-line" href="https://x.com/maav_sol">Follow @maav_sol ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Solana ■ 5 signals ■ 15 s refresh ■ 12 groups tracked ■ 256 calls dated ■ private build ■ by MAAV ■</span>
+    <span aria-hidden="true">Solana ■ 5 signals ■ 15 s refresh ■ 12 groups tracked ■ 256 calls dated ■ private build ■ by MAAV ■</span>
+  </div>
+</div>
+
+<main>
+  <section class="wrap proof" aria-label="Results so far">
+    <div class="proof-num disp">4<span>/8</span></div>
+    <div class="proof-txt">
+      <div class="label">Real calls, measured</div>
+      <h2>The called coin sat #1 in the feed fifteen minutes before the call.</h2>
+      <p>Eight real calls so far: seven replayed through the actual code, one recorded live. The misses stay in the count.</p>
+    </div>
+  </section>
+
+  <section class="wrap section" id="signals">
+    <h2 class="h2 disp">Five signals.<br><em>One ranking.</em></h2>
+    <div class="cards">
+      <article class="card">
+        <div class="card-n disp">01</div>
+        <h3>Wallet flow</h3>
+        <p>Tracked wallets taking a position before anyone talks.</p>
+      </article>
+      <article class="card">
+        <div class="card-n disp">02</div>
+        <h3>Paid listing</h3>
+        <p>A token page paid for ahead of the crowd.</p>
+      </article>
+      <article class="card">
+        <div class="card-n disp">03</div>
+        <h3>Launch profile</h3>
+        <p>Age and market cap that match how this group launches.</p>
+      </article>
+      <article class="card">
+        <div class="card-n disp">04</div>
+        <h3>Launch team</h3>
+        <p>Recurring buyers in the very first minute.</p>
+      </article>
+      <article class="card">
+        <div class="card-n disp">05</div>
+        <h3>Social footprint</h3>
+        <p>The same social setup as the group's recent calls.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="orange how" id="how">
+    <div class="wrap">
+      <h2 class="h2 disp">Launch → alert.</h2>
+      <div class="steps">
+        <div class="step">
+          <h3 class="disp">1 · Ingest</h3>
+          <p>New launches from pump.fun and DexScreener, pulled every 15 seconds, filtered on age and market cap.</p>
+        </div>
+        <div class="step">
+          <h3 class="disp">2 · Profile</h3>
+          <p>Each group's past calls define its own fingerprint. Measured, never guessed.</p>
+        </div>
+        <div class="step">
+          <h3 class="disp">3 · Lock in</h3>
+          <p>One button opens a hunt: tracked wallets polled live, every candidate ranked.</p>
+        </div>
+        <div class="step">
+          <h3 class="disp">4 · Alert</h3>
+          <p>A Telegram ping when signals converge. Every round of the ranking is kept.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section build" id="build">
+    <div class="build-l">
+      <h2 class="h2 disp">Under<br>the hood.</h2>
+      <div class="facts">
+        <div>
+          <h3>Replay bench</h3>
+          <p>Every deploy replays real past calls. One ranks worse, the release is blocked.</p>
+        </div>
+        <div>
+          <h3>Priced before it runs</h3>
+          <p>Cheap signature reads first, paid parsing only on the window that matters.</p>
+        </div>
+        <div>
+          <h3>One writer, private network</h3>
+          <p>One server writes, every other machine reads. Nothing faces the open internet.</p>
+        </div>
+      </div>
+    </div>
+    <ul class="stack disp" aria-label="Stack">
+      <li class="on">Python</li><li>Flask</li><li class="on">SQLite</li><li>Telethon</li><li class="ac">Helius</li><li>DexScreener</li><li class="on">pump.fun</li><li>Debian</li><li>systemd</li><li class="on">Tailscale</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="orange">
+  <div class="wrap">
+    <div class="end disp">No token.<br>Nothing to buy.</div>
+    <div class="foot">
+      <span>Built by <b>MAAV</b></span>
+      <a href="https://x.com/maav_sol">@maav_sol</a>
+      <a href="https://github.com/Maaaivy">github.com/Maaaivy</a>
+      <span class="right">Private build · not financial advice</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
