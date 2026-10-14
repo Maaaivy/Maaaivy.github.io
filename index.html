@@ -52,6 +52,7 @@ a{color:inherit}
 a:hover{opacity:.72}
 ::selection{background:var(--ac); color:var(--ink)}
 :focus-visible{outline:2px solid currentColor; outline-offset:3px}
+[tabindex="-1"]:focus{outline:none}
 
 .wrap{max-width:var(--wrap); margin:0 auto; padding:0 24px}
 .disp{font-family:var(--disp); font-stretch:125%; font-weight:900; text-transform:uppercase}
@@ -105,16 +106,20 @@ a:hover{opacity:.72}
 .receipts-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:12px 32px}
 .receipts-head .label{color:var(--ink)}
 .fan{margin-top:56px; display:flex; flex-wrap:wrap; justify-content:center; align-items:center}
+/* Every state keeps the same transform list (rotate, translateY, scale) so the
+   browser eases each part on its own instead of jumping through a matrix.
+   No reduced-motion cut-off here: a small tilt on hover is not the kind of
+   motion that setting is about, and with it the cards snapped instead. */
 .fan img{
   display:block; flex:1 1 260px; min-width:0; max-width:460px; height:auto;
   margin:12px -26px; position:relative;
-  box-shadow:0 28px 56px rgba(0,0,0,.35); transition:transform .25s ease;
+  box-shadow:0 28px 56px rgba(0,0,0,.35);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s cubic-bezier(.2,.8,.2,1);
 }
-.fan img:nth-child(1){transform:rotate(-6deg)}
-.fan img:nth-child(2){transform:rotate(2deg) translateY(-18px); z-index:1}
-.fan img:nth-child(3){transform:rotate(7deg); z-index:2}
-.fan img:hover{transform:rotate(0) scale(1.04); z-index:3}
-@media (prefers-reduced-motion: reduce){ .fan img{transition:none} }
+.fan img:nth-child(1){transform:rotate(-6deg) translateY(0) scale(1)}
+.fan img:nth-child(2){transform:rotate(2deg) translateY(-18px) scale(1); z-index:1}
+.fan img:nth-child(3){transform:rotate(7deg) translateY(0) scale(1); z-index:2}
+.fan img:hover{transform:rotate(0deg) translateY(-10px) scale(1.04); box-shadow:0 40px 72px rgba(0,0,0,.4); z-index:3}
 
 /* --- Sections ----------------------------------------------------------- */
 .section{padding-top:120px}
@@ -162,7 +167,7 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
   .ctas{margin-left:0}
   .foot .right{margin-left:0}
   .fan img{flex-basis:100%; margin:-4px 0}
-  .fan img:nth-child(2){transform:rotate(2deg)}
+  .fan img:nth-child(2){transform:rotate(2deg) translateY(0) scale(1)}
 }
 </style>
 </head>
@@ -228,7 +233,7 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
     </div>
   </section>
 
-  <section class="wrap section" id="signals">
+  <section class="wrap section" id="signals" tabindex="-1">
     <h2 class="h2 disp">Five signals.<br><em>One ranking.</em></h2>
     <div class="cards">
       <article class="card">
@@ -259,7 +264,7 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
     </div>
   </section>
 
-  <section class="orange how" id="how">
+  <section class="orange how" id="how" tabindex="-1">
     <div class="wrap">
       <h2 class="h2 disp">Launch → alert.</h2>
       <div class="steps">
@@ -283,7 +288,7 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
     </div>
   </section>
 
-  <section class="wrap section build" id="build">
+  <section class="wrap section build" id="build" tabindex="-1">
     <div class="build-l">
       <h2 class="h2 disp">Under<br>the hood.</h2>
       <div class="facts">
@@ -318,6 +323,40 @@ footer .wrap{padding-top:72px; padding-bottom:48px}
     </div>
   </div>
 </footer>
+
+<script>
+/* Smooth jump to a section. Done here rather than with CSS scroll-behavior:
+   when the OS turns animations off, the browser drops CSS smooth scrolling
+   and the page teleports. */
+(function () {
+  var DURATION = 700;
+  function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var id = link.getAttribute('href').slice(1);
+    var target = id && document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+
+    var start = window.scrollY;
+    var maxY = document.documentElement.scrollHeight - window.innerHeight;
+    var end = Math.min(target.getBoundingClientRect().top + start, maxY);
+    var t0 = null;
+
+    function step(now) {
+      if (t0 === null) t0 = now;
+      var p = Math.min((now - t0) / DURATION, 1);
+      window.scrollTo({ top: start + (end - start) * ease(p), behavior: 'instant' });
+      if (p < 1) { requestAnimationFrame(step); return; }
+      history.pushState(null, '', '#' + id);
+      target.focus({ preventScroll: true });
+    }
+    requestAnimationFrame(step);
+  });
+})();
+</script>
 
 </body>
 </html>
