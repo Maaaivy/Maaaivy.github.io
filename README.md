@@ -7,6 +7,6 @@ new memecoin by how closely it matches the next public call of a known group.
 The scanner itself is a private build. This repository only holds the page:
 one static `index.html`, no framework, no build step.
 
-Built by **MAAV** — [@maav_sol](https://x.com/maav_sol)
+Built by **MAAV**
 
 No token yet. Not financial advice.
